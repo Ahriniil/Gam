@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Project</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #111;
+            font-family: 'Courier New', Courier, monospace; /* Стиль шрифта для HUB */
+        }
+
+        /* Главный контейнер, который делит экран */
+        #main-layout {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Левая панель - ХАБ */
+        #hub-container {
+            width: 250px; /* Фиксированная ширина */
+            background-color: #1a1a1a;
+            border-right: 2px solid #333;
+            color: white;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 10;
+        }
+
+        /* Правая панель - ИГРА */
+        #game-container {
+            flex-grow: 1; /* Занимает всё оставшееся место */
+            position: relative;
+            background-color: #000;
+            overflow: hidden;
+        }
+
+        /* Стили для элементов внутри ХАБа */
+        .hub-title {
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #4CAF50;
+            border-bottom: 1px solid #444;
+            padding-bottom: 10px;
+        }
+
+        .resource-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            background: #2a2a2a;
+            border-radius: 5px;
+            border: 1px solid #333;
+        }
+
+        .res-name { font-size: 14px; color: #aaa; }
+        .res-count { font-size: 16px; font-weight: bold; color: #fff; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateX(-10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        #craft-panel {
+            position: absolute;
+            bottom: 20px; /* Отступ снизу */
+            left: 20px;   /* Отступ слева (прижмется к панели Склада) */
+            
+            /* Увеличенные размеры */
+            width: 380px; 
+            height: 140px; 
+            
+            background-color: rgba(0, 0, 0, 0.9); /* Почти черный фон */
+            border: 3px solid #555; /* Рамка потолще */
+            border-radius: 12px;
+            
+            display: flex;       
+            align-items: center; /* Центр по вертикали */
+            justify-content: flex-start; /* ВАЖНО: Выравнивание всего влево */
+            
+            padding-left: 20px; /* Внутренний отступ, чтобы квадрат не прилип к краю */
+            box-sizing: border-box; /* Чтобы padding не ломал размеры */
+            
+            z-index: 100;
+            box-shadow: 0 0 15px rgba(0,0,0,0.8); /* Тень для красоты */
+        }
+
+        /* Квадрат внутри панели */
+        #craft-square {
+            width: 100px;  /* Увеличили квадрат */
+            height: 100px; 
+            
+            background-color: #222;
+            border: 2px dashed #666;
+            border-radius: 8px;
+            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        #craft-square:hover {
+            background-color: #333;
+            border-color: #4CAF50; /* Зеленая рамка при наведении */
+            transform: scale(1.05); /* Легкое увеличение */
+        }
+
+        /* Иконка внутри квадрата */
+        #craft-icon {
+            font-size: 40px; /* Увеличили шрифт */
+            color: #555;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="main-layout">
+        <div id="hub-container"></div>
+
+        <div id="game-container"></div>
+    </div>
+
+    <script type="module" src="./main.js"></script>
+
+</body>
+</html>
